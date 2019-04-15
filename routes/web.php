@@ -11,6 +11,15 @@
 |
 */
 
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
+});
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('users', ['uses' => 'UserController@index', 'as' => 'user.index']);
+    $router->post('users', ['uses' => 'UserController@create', 'as' => 'user.create']);
+    $router->get('users/{id}', ['uses' => 'UserController@show', 'as' => 'user.show']);
+    $router->put('users/{id}', ['uses' => 'UserController@update', 'as' => 'user.update']);
+    $router->delete('users/{id}', ['uses' => 'UserController@destroy', 'as' => 'user.destroy']);
 });
