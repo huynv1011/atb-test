@@ -42,8 +42,8 @@ class UserController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'fullname' => 'required|max:50',
-            'phone' => 'required|max:20|numeric|unique:users'
+            'fullname' => 'bail|required|max:50',
+            'phone' => 'bail|required|digits_between:1,20|unique:users'
         ]);
 
         $user = $this->userService->create($request->all());
@@ -73,6 +73,11 @@ class UserController extends Controller
      */
     public function update($id, Request $request)
     {
+        $this->validate($request, [
+            'fullname' => 'bail|required|max:50',
+            'phone' => 'bail|required|digits_between:1,20|unique:users,phone,' . $id
+        ]);
+
         $user = $this->userService->update($id, $request->all());
 
         return response()->json($user, 200);
