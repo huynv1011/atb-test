@@ -24,6 +24,21 @@ class UsersTableSeeder extends Seeder
             'phone' => '0977555666',
             'created_at' => $now,
             'updated_at' => $now,
+        ], [
+            'fullname' => 'Tran Van An',
+            'phone' => '0977444555',
+            'created_at' => $now,
+            'updated_at' => $now,
+        ], [
+            'fullname' => 'Tran Van Minh',
+            'phone' => '0977333444',
+            'created_at' => $now,
+            'updated_at' => $now,
+        ], [
+            'fullname' => 'Tran Van Hoang',
+            'phone' => '0977222333',
+            'created_at' => $now,
+            'updated_at' => $now,
         ]]);
     }
 }
